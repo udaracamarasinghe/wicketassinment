@@ -53,7 +53,7 @@ public class EmployeeRepo {
 				max = e.getId();
 		}
 
-		employee.setId(max);
+		employee.setId(++max);
 		employees.add(employee);
 
 		return employee;

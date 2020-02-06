@@ -10,35 +10,58 @@
 			<div class="container">
 
 				<wicket:extend>
+
 					<form wicket:id="form">
-						<div>
+
+						<div class="form-group">
 							<div>
 								<label for="nameWId">Name:</label>
 							</div>
-							<input wicket:id="nameWId" id="name" type="text" size="40" />
+							<input wicket:id="nameWId" id="name" type="text"
+								class="form-control" />
 						</div>
-						<div>
+						<div class="form-group">
 							<div>
 								<label for="dobWId">DOB:</label>
 							</div>
-							<input wicket:id="dobWId" id="dob" type="text" size="40" />
+							<input wicket:id="dobWId" id="dob" type="text"
+								class="form-control" />
 						</div>
-						<div>
+						<div class="form-group">
 							<div>
 								<label for="ageWId">Age:</label>
 							</div>
-							<input wicket:id="ageWId" id="age" type="text" size="40" />
+							<input wicket:id="ageWId" id="age" type="text"
+								class="form-control" />
 						</div>
-						<div>
+						<div class="form-group">
 							<div>
 								<label for="emailWId">Email:</label>
 							</div>
-							<input wicket:id="emailWId" id="email" type="text" size="40" />
+							<input wicket:id="emailWId" id="email" type="text"
+								class="form-control" />
+						</div>
+						<div class="form-group">
+							<fieldset>
+								<div>
+									<label for="emailWId">Photo:</label>
+								</div>
+								<div>
+									<img wicket:id="photoWId"/>
+								</div>
+								<p>
+									<label for="uploadWithProgress">File</label> <input
+										wicket:id="fileInput" type="file" id="uploadWithProgress" />
+								</p>
+							</fieldset>
 						</div>
 						<div>
-							<input type="submit" value="UPDATE" />
+							<button type="submit" value="SAVE" class="btn btn-primary">SAVE</button>
+							<button type="submit" value="NEW" class="btn btn-primary"
+								wicket:id="newButton">NEW</button>
 						</div>
 					</form>
+
 				</wicket:extend>
 			</div>
 		</div>
