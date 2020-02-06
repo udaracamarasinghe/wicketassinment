@@ -1,6 +1,7 @@
 package com.mycompany.model;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public class EmployeeRepo {
 		e1.setId(1L);
 		e1.setName("Test");
 		e1.setEmail("test@test.com");
-		e1.setDob(new Date(2000, 3, 3));
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2000, 1, 3);
+		e1.setDob(calendar.getTime());
 		e1.setAge(21);
 
 		employees.add(e1);
@@ -41,5 +44,31 @@ public class EmployeeRepo {
 
 	public long getSize() {
 		return employees.size();
+	}
+
+	public Employee addEmployee(Employee employee) {
+		Long max = 0L;
+		for (Employee e : employees) {
+			if (e.getId() > max)
+				max = e.getId();
+		}
+
+		employee.setId(max);
+		employees.add(employee);
+
+		return employee;
+	}
+
+	public void updateEmployee(Employee employee) {
+		for (Employee e : employees) {
+			if (e.getId().equals(employee.getId())) {
+				e.setAge(employee.getAge());
+				e.setEmail(employee.getEmail());
+				e.setDob(employee.getDob());
+				e.setName(employee.getName());
+				e.setPhoto(employee.getPhoto());
+				return;
+			}
+		}
 	}
 }
