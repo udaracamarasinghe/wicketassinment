@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+<title>HomePage</title>
+</head>
+<body>
+	<wicket:extend>
+		<div class="jumbotron masthead">
+			<div class="container">
+
+				<wicket:extend>
+					<form wicket:id="form">
+						<div>
+							<div>
+								<label for="nameWId">Name:</label>
+							</div>
+							<input wicket:id="nameWId" id="name" type="text" size="40" />
+						</div>
+						<div>
+							<div>
+								<label for="dobWId">DOB:</label>
+							</div>
+							<input wicket:id="dobWId" id="dob" type="text" size="40" />
+						</div>
+						<div>
+							<div>
+								<label for="ageWId">Age:</label>
+							</div>
+							<input wicket:id="ageWId" id="age" type="text" size="40" />
+						</div>
+						<div>
+							<div>
+								<label for="emailWId">Email:</label>
+							</div>
+							<input wicket:id="emailWId" id="email" type="text" size="40" />
+						</div>
+					</form>
+				</wicket:extend>
+			</div>
+		</div>
+	</wicket:extend>
+</body>
+</html>
