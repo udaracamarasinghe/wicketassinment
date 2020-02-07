@@ -32,7 +32,7 @@ import org.joda.time.DateTime;
 import com.mycompany.basepage.BasePage;
 import com.mycompany.listscreen.ListScreen;
 import com.mycompany.model.Employee;
-import com.mycompany.model.EmployeeRepo;
+import com.mycompany.model.EmployeeRepod;
 
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextField;
 import de.agilecoders.wicket.extensions.markup.html.bootstrap.form.DateTextFieldConfig;
@@ -54,7 +54,7 @@ public class DetailScreen extends BasePage {
 		if (stringValue.isNull()) {
 			employee = new Employee();
 		} else {
-			employee = EmployeeRepo.getDB().getById(stringValue.toLong());
+			employee = EmployeeRepod.getDB().getById(stringValue.toLong());
 		}
 		Calendar calendar = Calendar.getInstance();
 
@@ -87,11 +87,11 @@ public class DetailScreen extends BasePage {
 				}
 
 				if (employee.getId() == null) {
-					Employee temp = EmployeeRepo.getDB().addEmployee(employee);
+					Employee temp = EmployeeRepod.getDB().addEmployee(employee);
 					employee.setId(temp.getId());
 					setResponsePage(ListScreen.class);
 				} else {
-					EmployeeRepo.getDB().updateEmployee(employee);
+					EmployeeRepod.getDB().updateEmployee(employee);
 					setResponsePage(ListScreen.class);
 
 				}
@@ -145,7 +145,7 @@ public class DetailScreen extends BasePage {
 									}
 								}));
 
-		if (employee.getPhoto() != null) {
+		if (employee.getPhoto() != null && !employee.getPhoto().isEmpty()) {
 
 			try {
 				File file = new File(System.getProperty("user.dir") + "/empimages/" + employee.getPhoto());

@@ -12,21 +12,19 @@ public class SortableEmployeeDataProvide extends SortableDataProvider<Employee, 
 	 */
 	private static final long serialVersionUID = 6687887719665294289L;
 
-	
-
 	public SortableEmployeeDataProvide() {
-		
+
 	}
 
 	@Override
 	public Iterator<? extends Employee> iterator(long first, long count) {
 		// TODO Auto-generated method stub
-		return EmployeeRepo.getDB().getEmployees(first, (first + count)).iterator();
+		return EmployeeRepod.getDB().getEmployees(first, (first + count)).iterator();
 	}
 
 	@Override
 	public long size() {
-		return EmployeeRepo.getDB().getSize();
+		return EmployeeRepod.getDB().getSize();
 	}
 
 	@Override

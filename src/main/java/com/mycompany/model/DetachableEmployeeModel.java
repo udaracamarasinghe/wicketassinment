@@ -2,8 +2,6 @@ package com.mycompany.model;
 
 import org.apache.wicket.model.LoadableDetachableModel;
 
-import com.mycompany.detailscreen.DetachableContactModel;
-
 public class DetachableEmployeeModel extends LoadableDetachableModel<Employee> {
 
 	private static final long serialVersionUID = -5085886954745585365L;
@@ -23,7 +21,7 @@ public class DetachableEmployeeModel extends LoadableDetachableModel<Employee> {
 
 	@Override
 	protected Employee load() {
-		return EmployeeRepo.getDB().getById(id);
+		return EmployeeRepod.getDB().getById(id);
 	}
 
 	@Override
@@ -37,7 +35,7 @@ public class DetachableEmployeeModel extends LoadableDetachableModel<Employee> {
 			return true;
 		} else if (obj == null) {
 			return false;
-		} else if (obj instanceof DetachableContactModel) {
+		} else if (obj instanceof DetachableEmployeeModel) {
 			DetachableEmployeeModel other = (DetachableEmployeeModel) obj;
 			return other.id == id;
 		}
