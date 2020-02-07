@@ -11,12 +11,15 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.export.CSVDataExporter;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.export.ExportToolbar;
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import com.mycompany.basepage.ActionPanel;
 import com.mycompany.basepage.BasePage;
+import com.mycompany.detailscreen.DetailScreen;
 import com.mycompany.model.Employee;
 import com.mycompany.model.SortableEmployeeDataProvide;
 
@@ -26,6 +29,9 @@ public class ListScreen extends BasePage {
 
 	public ListScreen() {
 		SortableEmployeeDataProvide dataProvider = new SortableEmployeeDataProvide();
+
+		Form form = new Form("form");
+		add(form);
 
 		List<IColumn<Employee, Long>> columns = new ArrayList<>();
 
@@ -49,6 +55,18 @@ public class ListScreen extends BasePage {
 		dataTable.addBottomToolbar(new ExportToolbar(dataTable).addDataExporter(new CSVDataExporter()));
 
 		add(dataTable);
+
+		Button newform = new Button("newButton") {
+
+			private static final long serialVersionUID = 8591729905940501087L;
+
+			@Override
+			public void onSubmit() {
+				setResponsePage(DetailScreen.class);
+			}
+		};
+
+		form.add(newform);
 	}
 
 }

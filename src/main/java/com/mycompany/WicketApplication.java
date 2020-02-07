@@ -10,7 +10,6 @@ import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
-import com.mycompany.datatablepage.ContactsDatabase;
 import com.mycompany.listscreen.ListScreen;
 
 import de.agilecoders.wicket.core.Bootstrap;
@@ -21,8 +20,6 @@ import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 public class WicketApplication extends WebApplication {
 
 	private Properties properties;
-
-	private final ContactsDatabase contactsDB = new ContactsDatabase(50);
 
 	public static WicketApplication get() {
 		return (WicketApplication) Application.get();
@@ -42,10 +39,6 @@ public class WicketApplication extends WebApplication {
 		super.init();
 
 		configureBootstrap();
-	}
-
-	public ContactsDatabase getContactsDB() {
-		return contactsDB;
 	}
 
 	public Properties getProperties() {

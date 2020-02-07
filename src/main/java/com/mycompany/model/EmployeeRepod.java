@@ -22,6 +22,16 @@ public class EmployeeRepod {
 		e1.setAge(21);
 
 		employees.add(e1);
+
+		Employee e2 = new Employee();
+		e2.setId(2L);
+		e2.setName("Test wewere");
+		e2.setEmail("test@test.com");
+		calendar.set(1900, 1, 3);
+		e2.setDob(calendar.getTime());
+		e2.setAge(28);
+
+		employees.add(e2);
 	}
 
 	public Employee getById(Long id) {
