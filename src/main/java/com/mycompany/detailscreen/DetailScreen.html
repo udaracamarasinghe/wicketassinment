@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org">
+
 <head>
-<meta charset="utf-8" />
-<title>HomePage</title>
+	<meta charset="utf-8" />
+	<title>HomePage</title>
 </head>
+
 <body>
 	<wicket:extend>
 		<div class="jumbotron masthead">
@@ -17,29 +19,25 @@
 							<div>
 								<label for="nameWId">Name:</label>
 							</div>
-							<input wicket:id="nameWId" id="name" type="text"
-								class="form-control" />
+							<input wicket:id="nameWId" id="name" type="text" class="form-control" />
 						</div>
 						<div class="form-group">
 							<div>
 								<label for="dobWId">DOB:</label>
 							</div>
-							<input wicket:id="dobWId" id="dob" type="text"
-								class="form-control" />
+							<input wicket:id="dobWId" id="dob" type="text" class="form-control" />
 						</div>
 						<div class="form-group">
 							<div>
 								<label for="ageWId">Age:</label>
 							</div>
-							<input wicket:id="ageWId" id="age" type="text"
-								class="form-control" />
+							<input wicket:id="ageWId" id="age" type="text" class="form-control" />
 						</div>
 						<div class="form-group">
 							<div>
 								<label for="emailWId">Email:</label>
 							</div>
-							<input wicket:id="emailWId" id="email" type="text"
-								class="form-control" />
+							<input wicket:id="emailWId" id="email" type="text" class="form-control" />
 						</div>
 						<div class="form-group">
 							<fieldset>
@@ -47,18 +45,17 @@
 									<label for="emailWId">Photo:</label>
 								</div>
 								<div>
-									<img wicket:id="photoWId"/>
+									<img wicket:id="photoWId" />
 								</div>
 								<p>
-									<label for="uploadWithProgress">File</label> <input
-										wicket:id="fileInput" type="file" id="uploadWithProgress" />
+									<label for="uploadWithProgress">File</label> <input wicket:id="fileInput"
+										type="file" id="uploadWithProgress" />
 								</p>
 							</fieldset>
 						</div>
 						<div>
 							<button type="submit" value="SAVE" class="btn btn-primary">SAVE</button>
-							<button type="submit" value="NEW" class="btn btn-primary"
-								wicket:id="newButton">NEW</button>
+							<button value="NEW" class="btn btn-primary" wicket:id="newButtonDS">NEW</button>
 						</div>
 					</form>
 
@@ -67,4 +64,5 @@
 		</div>
 	</wicket:extend>
 </body>
+
 </html>

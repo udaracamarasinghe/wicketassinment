@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.apache.wicket.Component;
+import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.form.Button;
@@ -19,6 +20,8 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.upload.FileUpload;
 import org.apache.wicket.markup.html.form.upload.FileUploadField;
 import org.apache.wicket.markup.html.image.Image;
+import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -99,14 +102,9 @@ public class DetailScreen extends BasePage {
 		};
 
 		form.setMultiPart(true);
-
 		form.add(fileUpload);
-
-		// Set maximum size to 100K for demo purposes
-		form.setMaxSize(Bytes.kilobytes(100));
-
-		// Set maximum size per file to 90K for demo purposes
-		form.setFileMaxSize(Bytes.kilobytes(90));
+		form.setMaxSize(Bytes.megabytes(100));
+		form.setFileMaxSize(Bytes.megabytes(100));
 
 		add(form);
 
@@ -149,9 +147,6 @@ public class DetailScreen extends BasePage {
 
 			try {
 				File file = new File(System.getProperty("user.dir") + "/empimages/" + employee.getPhoto());
-				boolean canRead = file.canRead();
-				boolean exists = file.exists();
-
 				byte[] content = Files.readAllBytes(file.toPath());
 
 				Image image = new Image("photoWId", new Model<IResource>()) {
@@ -185,17 +180,24 @@ public class DetailScreen extends BasePage {
 			form.add(new Image("photoWId", new Model<String>()));
 		}
 
-		Button newform = new Button("newButton") {
+//		Button newform = new Button("newButtonDS");
+//		form.add(newform);
 
-			private static final long serialVersionUID = 8591729905940501087L;
+		form.add(new Link<Button>("newButtonDS") {
+
+			private static final long serialVersionUID = 4909750415858066329L;
 
 			@Override
-			public void onSubmit() {
+			public void onClick() {
 				setResponsePage(DetailScreen.class);
 			}
-		};
 
-		form.add(newform);
+			@Override
+			public MarkupContainer setDefaultModel(IModel<?> model) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
 
 	}
 
