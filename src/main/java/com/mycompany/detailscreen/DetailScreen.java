@@ -47,7 +47,12 @@ public class DetailScreen extends BasePage {
 
 	public DetailScreen(final PageParameters parameters) {
 
-		File imagesDir = new File(System.getProperty("user.dir") + "/empimages");
+		String imageFilesDir = getProperties().getProperty("image.path");
+		if (imageFilesDir == null || imageFilesDir.isEmpty()) {
+			imageFilesDir = System.getProperty("user.dir") + "/empimages";
+		}
+
+		File imagesDir = new File(imageFilesDir);
 		boolean mkdir = imagesDir.mkdir();
 
 		StringValue stringValue = parameters.get("selected");
@@ -68,11 +73,9 @@ public class DetailScreen extends BasePage {
 			protected void onSubmit() {
 				final FileUpload uploadedFile = fileUpload.getFileUpload();
 				if (uploadedFile != null) {
-
-					// write to a new file
-					File newFile = new File(
-							System.getProperty("user.dir") + "/empimages/" + uploadedFile.getClientFileName());
-
+					System.out.println(imagesDir.getPath());
+					File newFile = new File(imagesDir.getPath() + File.separator + uploadedFile.getClientFileName());
+					System.out.println("ffff:" + newFile.getPath());
 					if (newFile.exists()) {
 						newFile.delete();
 					}
@@ -83,6 +86,7 @@ public class DetailScreen extends BasePage {
 
 						info("saved file: " + uploadedFile.getClientFileName());
 					} catch (Exception e) {
+						e.printStackTrace();
 						throw new IllegalStateException("Error");
 					}
 
@@ -146,7 +150,7 @@ public class DetailScreen extends BasePage {
 		if (employee.getPhoto() != null && !employee.getPhoto().isEmpty()) {
 
 			try {
-				File file = new File(System.getProperty("user.dir") + "/empimages/" + employee.getPhoto());
+				File file = new File(imageFilesDir+ File.separator + employee.getPhoto());
 				byte[] content = Files.readAllBytes(file.toPath());
 
 				Image image = new Image("photoWId", new Model<IResource>()) {
